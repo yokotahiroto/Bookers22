@@ -16,16 +16,21 @@ class UsersController < ApplicationController
   end
   
   def new
+     @user = User.find(params[:id])
   end
   
   def create
     @user = User.new(user_params)
     @user.user_id = current_user.id
     @user.save
-    redirect_to user_path.id
+    redirect_to user_path
   end
   
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    @user.save
+    redirect_to user_path(@user.id)
   end
   
   private
