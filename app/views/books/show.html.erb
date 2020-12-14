@@ -33,11 +33,12 @@
           <tr>
             <td>
               <%= link_to user_path(book.user.id) do %>
-              <%= attachment_image_tag book.user, :post_image_id, size:'40x40', falback: 'no_image.ipg', size:'40x40' %>
+              <%= attachment_image_tag @book_show.user, :post_image_id, size:'40x40', falback: 'no_image.ipg', size:'40x40' %>
               <% end %>
+              <%= link_to @book_show.user.name, user_path(@book_show.user) %>
             </td>
-            <td><%= link_to book.title, book_path %></td>
-            <td><%= opinion.body</td>
+            <td><%= link_to @book_show.title, book_path(@book_show.user) %></td>
+            <td><%= @book_show.body %></td>
           </tr>
         </tbody>
       </table>
